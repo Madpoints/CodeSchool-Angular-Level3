@@ -7,7 +7,7 @@
     // Gems as an array of objects
     var gems = [{
         name: 'Dodecahedron',
-        price: 2.95,
+        price: 2,
         description: 'Fancy',
         canPurchase: true,
         soldOut: false

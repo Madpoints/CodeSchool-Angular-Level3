@@ -1,17 +1,20 @@
 <!DOCTYPE html>
+<!--ng-app attaches app module to the page-->
 <html ng-app="store">
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
+    <!-- ng-controller attaches controller function to the page-->
     <body ng-controller="StoreController as store">
-        <!--Uses directive to iterate through store.products array-->
+        <!--ng-repeat directive to iterate through store.products array-->
         <div ng-repeat="product in store.products">
-        <!--Uses directive to hide product when soldOut == true-->
+        <!--ng-hide directive to hide product when soldOut == true-->
         <div ng-hide="product.soldOut">
             <h1>{{product.name}}</h1>
-            <h2>${{product.price}}</h2>
+            <!--pipe price into currency filter to format price-->
+            <h2>{{product.price | currency}}</h2>
             <p>{{product.description}}</p>
-            <!--Uses directive to show button when canPurchase == true-->
+            <!--ng-show directive to show button when canPurchase == true-->
             <button ng-show="product.canPurchase"> Add to Cart </button>
         </div>
         
