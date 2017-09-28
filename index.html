@@ -35,12 +35,35 @@
                     <blockquote>None yet</blockquote>
                 </div>
                 <div class="panel" ng-show="panel.isSelected(3)">
+                    
                     <h4>Reviews</h4>
-                    <blockquote>None yet</blockquote>
+                    <blockquote ng-repeat="review in product.reviews">
+                        <b>{{review.stars}} Star(s)</b><br>
+                        {{review.body}}<br>
+                        <cite>-{{review.author}}</cite>
+                    </blockquote>
+                    
+                    <h4>Submit a Review</h4>
+                    <form name="reviewForm" class="form-group">
+                        <!--ng-model binds form element value to the property-->
+                        <!--display review as user fills out form-->
+                        <blockquote>
+                            <b>{{review.stars}} Stars(s)</b><br>
+                            {{review.body}}<br>
+                            <cite>-{{review.author}}</cite>
+                        </blockquote>
+                        <select ng-model="review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]"  title="Stars">
+                            <option value="">Rate this Product</option>
+                        </select><br>
+                        <textarea ng-model="review.body" class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
+                        <label>by:</label>
+                        <input ng-model="review.author" type="email" class="form-control" placeholder="yourEmail@example.org" title="Email" />
+                        <input class="btn" type="submit" value="Submit"/>
+                    </form>
                 </div>
             </section>
             <!--ng-show directive to show button when canPurchase == true-->
-            <button ng-show="product.canPurchase"> Add to Cart </button>
+            <button class="btn" ng-show="product.canPurchase"> Add to Cart </button>
         </div>
         
         </div>
