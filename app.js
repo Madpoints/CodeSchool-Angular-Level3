@@ -1,10 +1,10 @@
 (function() {
     var app = angular.module('store', []);
-    
+    // controller for the page
     app.controller('StoreController', function() {
         this.products = gems;    
     });
-    
+    // controller for the panels
     app.controller('PanelController', function() {
         this.tab = 1;
         
@@ -13,6 +13,15 @@
         };
         this.isSelected = function(checkTab){
             return this.tab === checkTab;
+        };
+    });
+    //controller for review form
+    app.controller('ReviewController', function() {
+        this.review = {};
+        
+        this.addReview = function(product) {
+            product.reviews.push(this.review);
+            this.review = {};
         };
     });
     // Gems as an array of objects

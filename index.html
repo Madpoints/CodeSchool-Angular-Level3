@@ -44,20 +44,21 @@
                     </blockquote>
                     
                     <h4>Submit a Review</h4>
-                    <form name="reviewForm" class="form-group">
+                    <form name="reviewForm" class="form-group" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
                         <!--ng-model binds form element value to the property-->
                         <!--display review as user fills out form-->
                         <blockquote>
-                            <b>{{review.stars}} Stars(s)</b><br>
+                            <b>{{reviewCtrl.review.stars}} Stars(s)</b><br>
                             {{review.body}}<br>
-                            <cite>-{{review.author}}</cite>
+                            <cite>-{{reviewCtrl.review.author}}</cite>
                         </blockquote>
-                        <select ng-model="review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]"  title="Stars">
+                        <!--ng-options populates select option element-->
+                        <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]">
                             <option value="">Rate this Product</option>
                         </select><br>
-                        <textarea ng-model="review.body" class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
+                        <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Write a short review of the product..."></textarea>
                         <label>by:</label>
-                        <input ng-model="review.author" type="email" class="form-control" placeholder="yourEmail@example.org" title="Email" />
+                        <input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="yourEmail@example.org"/>
                         <input class="btn" type="submit" value="Submit"/>
                     </form>
                 </div>
